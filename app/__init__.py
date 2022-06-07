@@ -18,7 +18,7 @@ def init_connection_engine():
 
 
     if os.environ.get('LOCAL') == 'FALSE':
-        print('otwieramy połączenie z online db')
+        print('Try connect to online DB')
         pool = sqlalchemy.create_engine(
             sqlalchemy.engine.url.URL(
                 drivername="mysql+pymysql",
@@ -29,7 +29,7 @@ def init_connection_engine():
             )
         )
     else:
-        print('otwieramy locala')
+        print('Try connect to local DB')
         pool = sqlalchemy.create_engine(
         "mysql+pymysql://root:Test1234@localhost/todolist",
         connect_args= dict(host='localhost', port=3306)
