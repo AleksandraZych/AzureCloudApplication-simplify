@@ -13,6 +13,7 @@ runtime: python38 # or another supported version
 instance_class: F1
 
 env_variables:
+  LOCAL: 'TRUE' # or anything else
   MYSQL_USER: <user_name> # please put in your credentials
   MYSQL_PASSWORD: <user_pw> # please put in your credentials
   MYSQL_DB: <database_name> # please put in your credentials
