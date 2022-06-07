@@ -1,28 +1,12 @@
-# A Todo List demo App
-This is a todo list demo designed for CS411. 
-# Tutorial
-<iframe width="560" height="315" src="https://www.youtube.com/embed/sY1lLGe7ECA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-A comprehensive writeup is avaliable [here](https://tichung.com/blog/2021/20200323_flask/).
+# To do list application
 
 ## Requirements
 ```
-python >= 3.5
+python >= 3.7
 ```
+Create your localbase with instruction from migrations/db-create.txt
 
-## Getting started
-```bash
-git clone https://github.com/a2975667/flask-gcp-mysql-demo.git
-cd flask-gcp-mysql-demo
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-export FLASK_APP = app
-flask run
-```
-
-## Setting up GCP
-Create a `app.yaml` file in the root folder with the following content:
+Fill a `app.yaml` file in the root folder with the following content:
 ```yaml
 runtime: python38 # or another supported version
 
@@ -46,11 +30,3 @@ handlers:
   static_dir: static/styles
 ```
 
-Setting up the deployment
-```bash
-curl https://sdk.cloud.google.com | bash
-gcloud components install app-engine-python
-gcloud config set project cs411-sp21
-gcloud auth login
-gcloud app deploy
-```

@@ -1,7 +1,40 @@
 """ Specifies routing for the application"""
-from flask import render_template, request, jsonify
+import os
+
+from flask import render_template, request, jsonify, flash, \
+    url_for, redirect, abort, send_from_directory
 from app import app
 from app import database as db_helper
+
+@app.route("/")
+def homepage():
+    """ returns rendered homepage """
+    items = db_helper.fetch_todo()
+    files = os.listdir("app/uploads")
+    return render_template("index.html", items=items, files=files)
+
+
+@app.route("/", methods=['POST'])
+def upload_file():
+        if 'file' not in request.files:
+            flash('No file part')
+            return jsonify({'success': False, 'response': 'No file in request'})
+
+        file = request.files['file']
+        # if user does not select file, browser also
+        # submit a empty part without filename
+        if file.filename != '':
+            file.save(os.path.join('app/uploads',file.filename))
+            return redirect(url_for('homepage'))
+        #file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+        else:
+            flash('No selected file')
+            return jsonify({'success': False, 'response': 'No filename'})
+
+@app.route('/uploads/<filename>')
+def upload(filename):
+    return send_from_directory('C:/Users/cp24/Desktop/todolist/flask-gcp-mysql-demo/app/uploads', filename)
+
 
 @app.route("/delete/<int:task_id>", methods=['POST'])
 def delete(task_id):
@@ -46,8 +79,3 @@ def create():
     return jsonify(result)
 
 
-@app.route("/")
-def homepage():
-    """ returns rendered homepage """
-    items = db_helper.fetch_todo()
-    return render_template("index.html", items=items)

@@ -3,7 +3,6 @@ from app import db
 
 def fetch_todo() -> dict:
     """Reads all tasks listed in the todo table
-
     Returns:
         A list of dictionaries
     """
@@ -25,11 +24,9 @@ def fetch_todo() -> dict:
 
 def update_task_entry(task_id: int, text: str) -> None:
     """Updates task description based on given `task_id`
-
     Args:
         task_id (int): Targeted task_id
         text (str): Updated description
-
     Returns:
         None
     """
@@ -42,11 +39,9 @@ def update_task_entry(task_id: int, text: str) -> None:
 
 def update_status_entry(task_id: int, text: str) -> None:
     """Updates task status based on given `task_id`
-
     Args:
         task_id (int): Targeted task_id
         text (str): Updated status
-
     Returns:
         None
     """
@@ -59,10 +54,8 @@ def update_status_entry(task_id: int, text: str) -> None:
 
 def insert_new_task(text: str) ->  int:
     """Insert new task to todo table.
-
     Args:
         text (str): Task description
-
     Returns: The task ID for the inserted entry
     """
 

@@ -1,0 +1,11 @@
+CREATE DATABASE todolist;
+USE todolist;
+CREATE TABLE tasks(
+    	id INT AUTO_INCREMENT PRIMARY KEY,
+        task VARCHAR(100),
+        status VARCHAR(100)
+);
+-- Insertujemy tylko w statusach "Todo", "In Progress", "Complete"
+INSERT INTO tasks(task,status) VALUES
+('Oddać projekt z chmurki', 'Complete'),
+('Z powodzeniem zakończyć studia', 'In Progress');
