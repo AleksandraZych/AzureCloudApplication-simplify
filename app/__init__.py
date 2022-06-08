@@ -1,7 +1,6 @@
 """Setup at app startup"""
 # import os
 # import sqlalchemy
-from flask import Flask
 # from yaml import load, Loader
 
 
@@ -37,7 +36,6 @@ from flask import Flask
 #     return pool
 
 
-app = Flask(__name__)
 # db = init_connection_engine()
 
 
