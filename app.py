@@ -4,7 +4,7 @@ app = Flask(__name__)
 @app.route("/")
 def homepage():
 	""" returns rendered homepage """
-	items = all_mock = [
+	items = [
 		{
 			'id': '1',
 			'task': 'Zdać',
