@@ -1,4 +1,4 @@
-import sqlalchemy
+import SQLAlchemy as sqlalchemy
 
 LOCAL= 'FALSE'
 MYSQL_USER= 'useradmin@mysqlservernamegroup1'
