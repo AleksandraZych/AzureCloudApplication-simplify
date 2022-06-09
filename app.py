@@ -1,11 +1,11 @@
 from flask import Flask, render_template, jsonify, request
-from mock import all_logs
+from database_helper import fetch_todo
 app = Flask(__name__)
 
 @app.route("/")
 def homepage():
 	""" returns rendered homepage """
-	items = all_logs
+	items = fetch_todo()
 	return render_template("index.html", items=items)
 
 @app.route("/delete/<int:task_id>", methods=['POST'])
