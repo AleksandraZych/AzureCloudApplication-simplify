@@ -1,5 +1,4 @@
 import sqlalchemy
-import pyodbc
 
 LOCAL= 'FALSE'
 MYSQL_USER= 'useradmin@mysqlservernamegroup1'
