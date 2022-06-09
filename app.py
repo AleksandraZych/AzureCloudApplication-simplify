@@ -1,11 +1,14 @@
 from flask import Flask, render_template, jsonify, request
 from database_helper import fetch_todo
 app = Flask(__name__)
+from my_own_logging import insert_log
 
 @app.route("/")
 def homepage():
 	""" returns rendered homepage """
 	items = fetch_todo()
+	to_log = ', '.join(str(d) for d in items)
+	insert_log('Found items in to do list ' + str(to_log))
 	return render_template("index.html", items=items)
 
 @app.route("/delete/<int:task_id>", methods=['POST'])
