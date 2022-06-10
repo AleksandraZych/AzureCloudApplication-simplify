@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify, request
-from database_helper import fetch_todo
+from database_helper import fetch_todo,update_task_entry, update_status_entry, insert_new_task, remove_task_by_id
 app = Flask(__name__)
 from my_own_logging import insert_log
 
@@ -14,7 +14,7 @@ def homepage():
 @app.route("/delete/<int:task_id>", methods=['POST'])
 def delete(task_id):
 	try:
-		# db_helper.remove_task_by_id(task_id)
+		remove_task_by_id(task_id)
 		result = {'success': True, 'response': f'Removed task{task_id}'}
 	except:
 		result = {'success': False, 'response': 'Something went wrong'}
@@ -23,9 +23,8 @@ def delete(task_id):
 
 @app.route("/create", methods=['POST'])
 def create():
-	""" recieves post requests to add new task """
 	data = request.get_json()
-	# db_helper.insert_new_task(data['description'])
+	insert_new_task(data['description'])
 	result = {'success': True, 'response': 'Done created new task'}
 	return jsonify(result)
 
